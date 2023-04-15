@@ -12,7 +12,7 @@ export const FriendsList = ({ friends }) => {
         <FriendCard key={id}>
           <Status statusColor={isOnline ? 'green' : 'red'}></Status>
           <Avatar src={avatar} alt="User avatar" />
-          <p class="name">{name}</p>
+          <p>{name}</p>
         </FriendCard>
       ))}
     </ListOfFriends>
