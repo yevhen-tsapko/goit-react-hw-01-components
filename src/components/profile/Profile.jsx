@@ -1,4 +1,13 @@
 import PropTypes from 'prop-types';
+import {
+  ProfContainer,
+  Image,
+  Name,
+  Info,
+  Statistics,
+  Label,
+  Quantity,
+} from './Profile.styled';
 export const Profile = ({
   username,
   tag,
@@ -6,30 +15,36 @@ export const Profile = ({
   avatar,
   stats: { followers, views, likes },
 }) => {
+  const [formFollowers, formViews, formLikes] = [followers, views, likes].map(
+    el =>
+      new Intl.NumberFormat('en-US', {
+        style: 'decimal',
+      }).format(el)
+  );
   return (
-    <div class="profile">
-      <div class="description">
-        <img src={avatar} alt={username} class="avatar" />
-        <p class="name">{username}</p>
-        <p class="tag">@{tag}</p>
-        <p class="location">{location}</p>
+    <ProfContainer>
+      <div>
+        <Image src={avatar} alt={username} />
+        <Name>{username}</Name>
+        <Info>@{tag}</Info>
+        <Info>{location}</Info>
       </div>
 
-      <ul class="stats">
+      <Statistics>
         <li>
-          <span class="label">Followers</span>
-          <span class="quantity">{followers}</span>
+          <Label>Followers</Label>
+          <Quantity>{formFollowers}</Quantity>
         </li>
         <li>
-          <span class="label">Views</span>
-          <span class="quantity">{views}</span>
+          <Label>Views</Label>
+          <Quantity>{formViews}</Quantity>
         </li>
         <li>
-          <span class="label">Likes</span>
-          <span class="quantity">{likes}</span>
+          <Label>Likes</Label>
+          <Quantity>{formLikes}</Quantity>
         </li>
-      </ul>
-    </div>
+      </Statistics>
+    </ProfContainer>
   );
 };
 Profile.protoTypes = {

@@ -1,25 +1,38 @@
 import PropTypes from 'prop-types';
-export const Statistics = ({ title = 'Upload stats', stats }) => {
+import {
+  StatisticSect,
+  StatTitle,
+  StatList,
+  StatItem,
+  Label,
+  Percentage,
+} from './Statistics.styled';
+import { generateColor } from '../../utils/generateColor';
+export const Statistics = ({ title, stats }) => {
   return (
-    <section class="statistics">
-      {title && <h2 class="title">Upload stats</h2>}
-
-      <ul class="stat-list">
-        {stats.map(({ id, label, percentage }) => (
-          <li key={id} class="item">
-            <span class="label">{label}</span>
-            <span class="percentage">{percentage}%</span>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <StatisticSect>
+      {title && <StatTitle>Upload stats</StatTitle>}
+      <StatList columnsNumber={stats.length}>
+        {stats.map(({ id, label, percentage }) => {
+          return (
+            <StatItem key={id} itemColor={generateColor()}>
+              <Label>{label}</Label>
+              <Percentage>{percentage}%</Percentage>
+            </StatItem>
+          );
+        })}
+      </StatList>
+    </StatisticSect>
   );
 };
 
 Statistics.protoTypes = {
   title: PropTypes.string,
-  stats: PropTypes.arrayOf(PropTypes.shape.isRequired).isRequired,
-  id: PropTypes.number.isRequired,
-  label: PropTypes.oneOf(['.docx', '.mp3', '.psd', '.pdf']).isRequired,
-  percentage: PropTypes.number.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      label: PropTypes.oneOf(['.docx', '.mp3', '.psd', '.pdf']).isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
 };

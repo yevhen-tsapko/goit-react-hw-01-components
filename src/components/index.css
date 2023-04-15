@@ -1,0 +1,22 @@
+.global {
+  background-color: #8da3b2;
+}
+.ProfConteiner {
+  width: 60%;
+  margin: 15px auto 15px auto;
+  padding: 20px 40px;
+  border-radius: 4px;
+  background-color: #555757;
+}
+.Image {
+  font-size: 24px;
+  text-align: center;
+}
+.Name {
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+
+  align-items: center;
+  border-radius: 50%;
+}
