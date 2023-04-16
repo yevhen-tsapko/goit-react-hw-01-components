@@ -6,8 +6,8 @@ import { Transactions } from 'components/Transactions/Transactions';
 import { GlobalStyle } from 'components/GlobalStyle';
 import user from 'components/user.json';
 import data from 'components/data.json';
-import friends from './friends';
-import transactions from './transactions';
+import friends from 'components/friends';
+import transactions from 'components/transactions';
 export const App = () => {
   return (
     <div>
